@@ -51,7 +51,7 @@ We encourage you to [sign your Git commits with your GPG key](https://docs.githu
 This project uses [PHPUnit](https://phpunit.de/) for testing:
 
 ```shell
-./vendor/bin/phpunit
+./tools/phpunit
 ```
 
 This project uses [PHPStan](https://phpstan.org/) for static analysis:
