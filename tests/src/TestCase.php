@@ -26,7 +26,7 @@ abstract class TestCase extends PhpunitTestCase
     protected function configurationForTesting(): array
     {
         return [
-            'host'     => 'localhost',
+            'host'     => '127.0.0.1',
             'username' => 'mysqli_wrapper_test_all_privileges',
             'password' => 'mysqli_wrapper_test_all_privileges_password',
             'database' => 'mysqli_wrapper_test',
@@ -36,7 +36,7 @@ abstract class TestCase extends PhpunitTestCase
     protected function connectionForReading(): MysqliReadingDatabaseConnection
     {
         return MysqliReadingDatabaseConnection::connect(
-            'localhost',
+            '127.0.0.1',
             'mysqli_wrapper_test_only_select_privilege',
             'mysqli_wrapper_test_only_select_privilege_password',
             'mysqli_wrapper_test',
@@ -46,7 +46,7 @@ abstract class TestCase extends PhpunitTestCase
     protected function connectionForWriting(): MysqliWritingDatabaseConnection
     {
         return MysqliWritingDatabaseConnection::connect(
-            'localhost',
+            '127.0.0.1',
             'mysqli_wrapper_test_only_insert_privilege',
             'mysqli_wrapper_test_only_insert_privilege_password',
             'mysqli_wrapper_test',

@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS mysqli_wrapper_test;
-DROP USER IF EXISTS mysqli_wrapper_test_all_privileges@localhost;
-DROP USER IF EXISTS mysqli_wrapper_test_only_insert_privilege@localhost;
-DROP USER IF EXISTS mysqli_wrapper_test_only_select_privilege@localhost;
+DROP USER IF EXISTS mysqli_wrapper_test_all_privileges@127.0.0.1;
+DROP USER IF EXISTS mysqli_wrapper_test_only_insert_privilege@127.0.0.1;
+DROP USER IF EXISTS mysqli_wrapper_test_only_select_privilege@127.0.0.1;
 
 CREATE DATABASE mysqli_wrapper_test;
 USE mysqli_wrapper_test;
@@ -12,11 +12,11 @@ CREATE TABLE `test` (
   `c` FLOAT UNSIGNED NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE USER mysqli_wrapper_test_all_privileges@localhost IDENTIFIED BY 'mysqli_wrapper_test_all_privileges_password';
-GRANT ALL PRIVILEGES ON mysqli_wrapper_test.* TO mysqli_wrapper_test_all_privileges@localhost;
+CREATE USER mysqli_wrapper_test_all_privileges@127.0.0.1 IDENTIFIED BY 'mysqli_wrapper_test_all_privileges_password';
+GRANT ALL PRIVILEGES ON mysqli_wrapper_test.* TO mysqli_wrapper_test_all_privileges@127.0.0.1;
 
-CREATE USER mysqli_wrapper_test_only_insert_privilege@localhost IDENTIFIED BY 'mysqli_wrapper_test_only_insert_privilege_password';
-GRANT INSERT ON mysqli_wrapper_test.test TO mysqli_wrapper_test_only_insert_privilege@localhost;
+CREATE USER mysqli_wrapper_test_only_insert_privilege@127.0.0.1 IDENTIFIED BY 'mysqli_wrapper_test_only_insert_privilege_password';
+GRANT INSERT ON mysqli_wrapper_test.test TO mysqli_wrapper_test_only_insert_privilege@127.0.0.1;
 
-CREATE USER mysqli_wrapper_test_only_select_privilege@localhost IDENTIFIED BY 'mysqli_wrapper_test_only_select_privilege_password';
-GRANT SELECT ON mysqli_wrapper_test.test TO mysqli_wrapper_test_only_select_privilege@localhost;
+CREATE USER mysqli_wrapper_test_only_select_privilege@127.0.0.1 IDENTIFIED BY 'mysqli_wrapper_test_only_select_privilege_password';
+GRANT SELECT ON mysqli_wrapper_test.test TO mysqli_wrapper_test_only_select_privilege@127.0.0.1;
