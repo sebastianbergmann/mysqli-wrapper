@@ -51,3 +51,35 @@ jobs:
 
       - name: Run PHPStan
         run: ./tools/phpstan analyse --no-progress --error-format=github
+
+  tests:
+    name: Tests
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "8.3"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v4"
+
+      - name: "Install PHP with extensions"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: "pcov"
+
+      - name: "Install dependencies with Composer"
+        run: "./tools/composer update --no-ansi --no-interaction --no-progress"
+
+      - name: "Run tests with PHPUnit"
+        run: "./tools/phpunit --coverage-clover=coverage.xml"
+
+      - name: "Send code coverage report to Codecov.io"
+        env:
+          CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
+        run: "bash <(curl -s https://codecov.io/bash) || true"
