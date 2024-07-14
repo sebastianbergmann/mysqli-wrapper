@@ -24,7 +24,7 @@ trait MysqliWritingDatabaseConnectionTrait
      * @throws StatementFailedException
      * @throws StatementReturnedResultException
      */
-    public function execute(string $sql, string ...$parameters): true
+    public function execute(string $sql, float|int|string ...$parameters): true
     {
         $this->ensureParameterCountMatches($sql, $parameters);
 
