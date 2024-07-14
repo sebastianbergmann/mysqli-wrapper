@@ -44,8 +44,8 @@ abstract readonly class AbstractMysqliDatabaseConnection
     }
 
     /**
-     * @param non-empty-string $sql
-     * @param array<string>    $parameters
+     * @param non-empty-string        $sql
+     * @param array<float|int|string> $parameters
      *
      * @throws ParameterMismatchException
      */
