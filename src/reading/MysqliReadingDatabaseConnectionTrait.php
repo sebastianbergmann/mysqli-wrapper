@@ -23,6 +23,7 @@ trait MysqliReadingDatabaseConnectionTrait
     /**
      * @param non-empty-string $sql
      *
+     * @throws ParameterMismatchException
      * @throws StatementDidNotReturnResultException
      * @throws StatementFailedException
      *

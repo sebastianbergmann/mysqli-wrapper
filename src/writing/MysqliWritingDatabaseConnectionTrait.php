@@ -21,6 +21,7 @@ trait MysqliWritingDatabaseConnectionTrait
     /**
      * @param non-empty-string $sql
      *
+     * @throws ParameterMismatchException
      * @throws StatementFailedException
      * @throws StatementReturnedResultException
      */
