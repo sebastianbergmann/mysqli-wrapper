@@ -29,7 +29,7 @@ trait MysqliReadingDatabaseConnectionTrait
      *
      * @return list<array<non-empty-string, mixed>>
      */
-    public function query(string $sql, string ...$parameters): array
+    public function query(string $sql, float|int|string ...$parameters): array
     {
         $this->ensureParameterCountMatches($sql, $parameters);
 

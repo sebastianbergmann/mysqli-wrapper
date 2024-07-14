@@ -17,5 +17,5 @@ interface WritingDatabaseConnection
     /**
      * @param non-empty-string $sql
      */
-    public function execute(string $sql, string ...$parameters): true;
+    public function execute(string $sql, float|int|string ...$parameters): true;
 }

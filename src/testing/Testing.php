@@ -76,7 +76,7 @@ trait Testing
      * @param list<array<string, float|int|string>> $expected
      * @param non-empty-string                      $query
      */
-    final protected function assertQuery(array $expected, string $query, string ...$parameters): void
+    final protected function assertQuery(array $expected, string $query, float|int|string ...$parameters): void
     {
         Assert::assertSame($expected, $this->connectionForTesting()->query($query, ...$parameters));
     }
