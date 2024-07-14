@@ -12,7 +12,7 @@ namespace SebastianBergmann\MysqliWrapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Medium;
-use PHPUnit\Framework\TestCase;
+use SebastianBergmann\MysqliWrapper\Testing\TestCase;
 use SebastianBergmann\MysqliWrapper\Testing\Testing;
 
 #[CoversClass(MysqliWritingDatabaseConnection::class)]
@@ -21,8 +21,6 @@ use SebastianBergmann\MysqliWrapper\Testing\Testing;
 #[Medium]
 final class MysqliWritingDatabaseConnectionTest extends TestCase
 {
-    use Testing;
-
     public function testCanInsertIntoTableUsingConnectionThatIsAllowedToInsertIntoTable(): void
     {
         $this->emptyTable('test');
@@ -30,28 +28,5 @@ final class MysqliWritingDatabaseConnectionTest extends TestCase
         $connection = $this->connectionForWriting();
 
         $this->assertTrue($connection->execute('INSERT INTO test () VALUES();'));
-    }
-
-    /**
-     * @return array{host: non-empty-string, username: non-empty-string, password: non-empty-string, database: non-empty-string}
-     */
-    protected function configurationForTesting(): array
-    {
-        return [
-            'host'     => 'localhost',
-            'username' => 'mysqli_wrapper_test_all_privileges',
-            'password' => 'mysqli_wrapper_test_all_privileges_password',
-            'database' => 'mysqli_wrapper_test',
-        ];
-    }
-
-    private function connectionForWriting(): MysqliWritingDatabaseConnection
-    {
-        return MysqliWritingDatabaseConnection::connect(
-            'localhost',
-            'mysqli_wrapper_test_only_insert_privilege',
-            'mysqli_wrapper_test_only_insert_privilege_password',
-            'mysqli_wrapper_test',
-        );
     }
 }

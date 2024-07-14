@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DependsExternal;
 use PHPUnit\Framework\Attributes\Medium;
-use PHPUnit\Framework\TestCase;
+use SebastianBergmann\MysqliWrapper\Testing\TestCase;
 use SebastianBergmann\MysqliWrapper\Testing\Testing;
 
 #[CoversClass(MysqliReadingDatabaseConnection::class)]
@@ -22,8 +22,6 @@ use SebastianBergmann\MysqliWrapper\Testing\Testing;
 #[Medium]
 final class MysqliReadingDatabaseConnectionTest extends TestCase
 {
-    use Testing;
-
     #[DependsExternal(MysqliWritingDatabaseConnectionTest::class, 'testCanInsertIntoTableUsingConnectionThatIsAllowedToInsertIntoTable')]
     public function testCanSelectFromTableUsingConnectionThatIsAllowedToSelectFromTable(): void
     {
@@ -32,29 +30,6 @@ final class MysqliReadingDatabaseConnectionTest extends TestCase
         $this->assertSame(
             [['id' => 1]],
             $connection->query('SELECT id FROM test;'),
-        );
-    }
-
-    /**
-     * @return array{host: non-empty-string, username: non-empty-string, password: non-empty-string, database: non-empty-string}
-     */
-    protected function configurationForTesting(): array
-    {
-        return [
-            'host'     => 'localhost',
-            'username' => 'mysqli_wrapper_test_all_privileges',
-            'password' => 'mysqli_wrapper_test_all_privileges_password',
-            'database' => 'mysqli_wrapper_test',
-        ];
-    }
-
-    private function connectionForReading(): MysqliReadingDatabaseConnection
-    {
-        return MysqliReadingDatabaseConnection::connect(
-            'localhost',
-            'mysqli_wrapper_test_only_select_privilege',
-            'mysqli_wrapper_test_only_select_privilege_password',
-            'mysqli_wrapper_test',
         );
     }
 }
