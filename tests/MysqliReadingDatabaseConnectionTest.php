@@ -12,6 +12,7 @@ namespace SebastianBergmann\MysqliWrapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Medium;
+use PHPUnit\Framework\Attributes\TestDox;
 use SebastianBergmann\MysqliWrapper\Testing\TestCase;
 use SebastianBergmann\MysqliWrapper\Testing\Testing;
 
@@ -22,6 +23,7 @@ use SebastianBergmann\MysqliWrapper\Testing\Testing;
 #[CoversTrait(Testing::class)]
 #[CoversTrait(MysqliReadingDatabaseConnectionTrait::class)]
 #[Medium]
+#[TestDox('MysqliReadingDatabaseConnection class')]
 final class MysqliReadingDatabaseConnectionTest extends TestCase
 {
     protected function setUp(): void
