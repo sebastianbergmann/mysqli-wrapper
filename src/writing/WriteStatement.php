@@ -14,5 +14,5 @@ namespace SebastianBergmann\MysqliWrapper;
  */
 interface WriteStatement
 {
-    public function execute(WritingDatabaseConnection $database): void;
+    public function execute(WritingDatabaseConnection $connection): void;
 }
