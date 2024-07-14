@@ -70,6 +70,14 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@v4"
 
+      - name: "Install MySQL"
+        uses: shogo82148/actions-setup-mysql@v1
+        with:
+          mysql-version: "9.0"
+
+      - name: "Set up test database"
+        run: mysql -u root < ./tests/fixture/schema.sql
+
       - name: "Install PHP with extensions"
         uses: "shivammathur/setup-php@v2"
         with:
@@ -80,7 +88,7 @@ jobs:
         run: "./tools/composer update --no-ansi --no-interaction --no-progress"
 
       - name: "Run tests with PHPUnit"
-        run: "./tools/phpunit --coverage-clover=coverage.xml --display-skipped"
+        run: "./tools/phpunit --coverage-clover=coverage.xml"
 
       - name: "Send code coverage report to Codecov.io"
         env:
