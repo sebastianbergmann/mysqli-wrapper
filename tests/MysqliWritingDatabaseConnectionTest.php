@@ -9,6 +9,7 @@
  */
 namespace SebastianBergmann\MysqliWrapper;
 
+use mysqli_result;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Medium;
@@ -16,17 +17,74 @@ use SebastianBergmann\MysqliWrapper\Testing\TestCase;
 use SebastianBergmann\MysqliWrapper\Testing\Testing;
 
 #[CoversClass(MysqliWritingDatabaseConnection::class)]
+#[CoversClass(ParameterMismatchException::class)]
+#[CoversClass(StatementFailedException::class)]
+#[CoversClass(StatementReturnedResultException::class)]
 #[CoversTrait(Testing::class)]
 #[CoversTrait(MysqliWritingDatabaseConnectionTrait::class)]
 #[Medium]
 final class MysqliWritingDatabaseConnectionTest extends TestCase
 {
-    public function testCanInsertIntoTableUsingConnectionThatIsAllowedToInsertIntoTable(): void
+    protected function setUp(): void
     {
         $this->emptyTable('test');
+    }
 
+    public function testCanExecuteWriteStatement(): void
+    {
         $connection = $this->connectionForWriting();
 
-        $this->assertTrue($connection->execute('INSERT INTO test () VALUES();'));
+        $result = $connection->execute(
+            'INSERT INTO test (a, b, c) VALUES(?, ?, ?);',
+            'test',
+            1234,
+            12.34,
+        );
+
+        $this->assertTrue($result);
+
+        $result = $this->nativeConnection()->query('SELECT * FROM test;');
+
+        $this->assertInstanceOf(mysqli_result::class, $result);
+
+        $this->assertSame(
+            [
+                [
+                    'a' => 'test',
+                    'b' => 1234,
+                    'c' => 12.34,
+                ],
+            ],
+            $result->fetch_all(MYSQLI_ASSOC),
+        );
+    }
+
+    public function testCannotExecuteWriteStatementWhenParameterCountDoesNotMatch(): void
+    {
+        $connection = $this->connectionForWriting();
+
+        $this->expectException(ParameterMismatchException::class);
+
+        $connection->execute(
+            'INSERT INTO test (a, b, c) VALUES(?, ?, ?);',
+            'test',
+            1234,
+        );
+    }
+
+    public function testRaisesAnExceptionWhenStatementFails(): void
+    {
+        $connection = $this->connectionForWriting();
+
+        $this->expectException(StatementFailedException::class);
+
+        $connection->execute('INSERT INTO ...;');
+    }
+
+    public function testRaisesAnExceptionWhenStatementReturnsResult(): void
+    {
+        $this->expectException(StatementReturnedResultException::class);
+
+        $this->connectionForReadingAndWriting()->execute('SELECT * FROM test;');
     }
 }

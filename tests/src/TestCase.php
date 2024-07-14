@@ -9,7 +9,10 @@
  */
 namespace SebastianBergmann\MysqliWrapper\Testing;
 
+use function mysqli_report;
+use mysqli;
 use PHPUnit\Framework\TestCase as PhpunitTestCase;
+use SebastianBergmann\MysqliWrapper\MysqliDatabaseConnection;
 use SebastianBergmann\MysqliWrapper\MysqliReadingDatabaseConnection;
 use SebastianBergmann\MysqliWrapper\MysqliWritingDatabaseConnection;
 
@@ -48,5 +51,35 @@ abstract class TestCase extends PhpunitTestCase
             'mysqli_wrapper_test_only_insert_privilege_password',
             'mysqli_wrapper_test',
         );
+    }
+
+    protected function connectionForReadingAndWriting(): MysqliDatabaseConnection
+    {
+        $configuration = $this->configurationForTesting();
+
+        return MysqliDatabaseConnection::connect(
+            $configuration['host'],
+            $configuration['username'],
+            $configuration['password'],
+            $configuration['database'],
+        );
+    }
+
+    protected function nativeConnection(): mysqli
+    {
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+        $configuration = $this->configurationForTesting();
+
+        $connection = new mysqli(
+            $configuration['host'],
+            $configuration['username'],
+            $configuration['password'],
+            $configuration['database'],
+        );
+
+        $connection->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
+
+        return $connection;
     }
 }

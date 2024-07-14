@@ -7,9 +7,9 @@ CREATE DATABASE mysqli_wrapper_test;
 USE mysqli_wrapper_test;
 
 CREATE TABLE `test` (
-  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-
-  PRIMARY KEY (`id`)
+  `a` VARCHAR(8) NOT NULL,
+  `b` INTEGER UNSIGNED NOT NULL,
+  `c` FLOAT UNSIGNED NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE USER mysqli_wrapper_test_all_privileges@localhost IDENTIFIED BY 'mysqli_wrapper_test_all_privileges_password';
