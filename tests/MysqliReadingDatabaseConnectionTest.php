@@ -13,14 +13,17 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DependsExternal;
 use PHPUnit\Framework\Attributes\Medium;
-use SebastianBergmann\MysqliWrapper\Testing\DatabaseTestCase;
+use PHPUnit\Framework\TestCase;
+use SebastianBergmann\MysqliWrapper\Testing\Testing;
 
 #[CoversClass(MysqliReadingDatabaseConnection::class)]
-#[CoversClass(DatabaseTestCase::class)]
+#[CoversTrait(Testing::class)]
 #[CoversTrait(MysqliReadingDatabaseConnectionTrait::class)]
 #[Medium]
-final class MysqliReadingDatabaseConnectionTest extends DatabaseTestCase
+final class MysqliReadingDatabaseConnectionTest extends TestCase
 {
+    use Testing;
+
     #[DependsExternal(MysqliWritingDatabaseConnectionTest::class, 'testCanInsertIntoTableUsingConnectionThatIsAllowedToInsertIntoTable')]
     public function testCanSelectFromTableUsingConnectionThatIsAllowedToSelectFromTable(): void
     {

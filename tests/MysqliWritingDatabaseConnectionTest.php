@@ -12,14 +12,17 @@ namespace SebastianBergmann\MysqliWrapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Medium;
-use SebastianBergmann\MysqliWrapper\Testing\DatabaseTestCase;
+use PHPUnit\Framework\TestCase;
+use SebastianBergmann\MysqliWrapper\Testing\Testing;
 
 #[CoversClass(MysqliWritingDatabaseConnection::class)]
-#[CoversClass(DatabaseTestCase::class)]
+#[CoversTrait(Testing::class)]
 #[CoversTrait(MysqliWritingDatabaseConnectionTrait::class)]
 #[Medium]
-final class MysqliWritingDatabaseConnectionTest extends DatabaseTestCase
+final class MysqliWritingDatabaseConnectionTest extends TestCase
 {
+    use Testing;
+
     public function testCanInsertIntoTableUsingConnectionThatIsAllowedToInsertIntoTable(): void
     {
         $this->emptyTable('test');

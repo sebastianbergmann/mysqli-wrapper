@@ -14,7 +14,7 @@ use function count;
 use function implode;
 use function iterator_to_array;
 use function sprintf;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Assert;
 use SebastianBergmann\CsvParser\Parser as CsvParser;
 use SebastianBergmann\CsvParser\Schema as CsvSchema;
 use SebastianBergmann\MysqliWrapper\MysqliDatabaseConnection;
@@ -23,7 +23,7 @@ use Throwable;
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise
  */
-abstract class DatabaseTestCase extends TestCase
+trait Testing
 {
     /**
      * @param non-empty-string $path
@@ -69,7 +69,7 @@ abstract class DatabaseTestCase extends TestCase
             ),
         );
 
-        $this->assertSame($expected, $result[0]['count']);
+        Assert::assertSame($expected, $result[0]['count']);
     }
 
     /**
@@ -78,7 +78,7 @@ abstract class DatabaseTestCase extends TestCase
      */
     final protected function assertQuery(array $expected, string $query, string ...$parameters): void
     {
-        $this->assertSame($expected, $this->connectionForTesting()->query($query, ...$parameters));
+        Assert::assertSame($expected, $this->connectionForTesting()->query($query, ...$parameters));
     }
 
     /**
@@ -106,7 +106,7 @@ abstract class DatabaseTestCase extends TestCase
                 $configuration['database'],
             );
         } catch (Throwable) {
-            $this->markTestSkipped('Could not connect to test database');
+            Assert::markTestSkipped('Could not connect to test database');
         }
     }
 
