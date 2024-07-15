@@ -27,7 +27,7 @@ trait MysqliReadingDatabaseConnectionTrait
      * @throws StatementDidNotReturnResultException
      * @throws StatementFailedException
      *
-     * @return list<array<non-empty-string, mixed>>
+     * @return list<array<non-empty-string, float|int|string>>
      */
     public function query(string $sql, float|int|string ...$parameters): array
     {
