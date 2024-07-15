@@ -7,7 +7,6 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 ### Fixed
 
 * `ReadingDatabaseConnection::query()` now accepts parameters of type `float`, `integer`, and `string`
-* `MysqliReadingDatabaseConnectionTrait::query()` now accepts parameters of type `float`, `integer`, and `string`
 * `WritingDatabaseConnection::query()` now accepts parameters of type `float`, `integer`, and `string`
 * `Testing::assertQuery()` now accepts parameters of type `float`, `integer`, and `string`
 
