@@ -5,18 +5,14 @@
 
 # sebastian/mysqli-wrapper
 
-TBD
+This repository contains code that was originally written while building an example application for my
+"[Event-Based Testing](https://thephp.cc/presentations/event-based-testing?ref=github)" presentation.
 
-## Installation
+The code has been extracted from this example application into a reusable component. Just because
+this component can be installed using Composer does not mean that it is anything  other than example
+code. It is not production-ready. It is intended for study and learning purposes only.
 
-You can add this library as a local, per-project dependency to your project using [Composer](https://getcomposer.org/):
+The only reason this code was extracted into a reusable component is to make reusing it in other
+example applications easier for me.
 
-```
-composer require sebastian/mysqli-wrapper
-```
-
-If you only need this library during development, for instance to run your project's test suite, then you should add it as a development-time dependency:
-
-```
-composer require --dev sebastian/mysqli-wrapper
-```
+Please note that this is a [low maintenance project](https://github.com/sebastianbergmann/mysqli-wrapper/blob/main/.github/CONTRIBUTING.md#low-maintenance-project).
