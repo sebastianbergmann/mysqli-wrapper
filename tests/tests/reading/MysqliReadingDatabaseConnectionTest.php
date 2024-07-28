@@ -59,6 +59,7 @@ final class MysqliReadingDatabaseConnectionTest extends TestCase
         $connection = $this->connectionForReading();
 
         $this->expectException(ParameterMismatchException::class);
+        $this->expectExceptionMessage('Number of parameters does not match number of placeholders');
 
         $connection->query(
             'SELECT * FROM test WHERE a = ?;',
