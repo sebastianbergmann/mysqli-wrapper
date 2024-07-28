@@ -13,6 +13,7 @@ use function count;
 use function mysqli_report;
 use function substr_count;
 use mysqli;
+use mysqli_sql_exception;
 
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise
@@ -28,12 +29,22 @@ abstract readonly class AbstractMysqliDatabaseConnection
      * @param non-empty-string $username
      * @param non-empty-string $password
      * @param non-empty-string $database
+     *
+     * @throws ConnectionFailedException
      */
     final public static function connect(string $host, string $username, string $password, string $database): static
     {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-        $connection = new mysqli($host, $username, $password, $database);
+        try {
+            $connection = @new mysqli($host, $username, $password, $database);
+        } catch (mysqli_sql_exception $e) {
+            throw new ConnectionFailedException(
+                $e->getMessage(),
+                $e->getCode(),
+                $e,
+            );
+        }
 
         $connection->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
 
