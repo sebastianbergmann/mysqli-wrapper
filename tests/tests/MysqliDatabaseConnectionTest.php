@@ -19,7 +19,7 @@ use SebastianBergmann\MysqliWrapper\Testing\TestCase;
 #[TestDox('MysqliDatabaseConnection class')]
 final class MysqliDatabaseConnectionTest extends TestCase
 {
-    public function testRaisesExceptionWhenConnectingToDatabaseFails(): void
+    public function testRaisesAnExceptionWhenConnectingToDatabaseFails(): void
     {
         $this->expectException(ConnectionFailedException::class);
 

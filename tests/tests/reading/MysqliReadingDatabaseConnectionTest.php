@@ -33,7 +33,7 @@ final class MysqliReadingDatabaseConnectionTest extends TestCase
         $this->nativeConnection()->query('INSERT INTO test (a, b, c) VALUES("test", 1234, 12.34);');
     }
 
-    public function testCanExecuteReadStatement(): void
+    public function testExecutesReadStatement(): void
     {
         $connection = $this->connectionForReading();
 
@@ -54,7 +54,7 @@ final class MysqliReadingDatabaseConnectionTest extends TestCase
         );
     }
 
-    public function testCannotExecuteReadStatementWhenParameterCountDoesNotMatch(): void
+    public function testRaisesAnExceptionWhenParameterCountDoesNotMatch(): void
     {
         $connection = $this->connectionForReading();
 
@@ -66,7 +66,7 @@ final class MysqliReadingDatabaseConnectionTest extends TestCase
         );
     }
 
-    public function testRaisesAnExceptionWhenStatementFails(): void
+    public function testRaisesAnExceptionWhenStatementFailsToExecute(): void
     {
         $connection = $this->connectionForReading();
 

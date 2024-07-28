@@ -22,7 +22,7 @@ final class TestingFailTest extends PhpunitTestCase
 {
     use Testing;
 
-    public function testSkipsTestExecutionWhenDatabaseConnectionFails(): void
+    public function testSkipsTestExecutionWhenConnectingToDatabaseFails(): void
     {
         $this->expectException(SkippedWithMessageException::class);
 

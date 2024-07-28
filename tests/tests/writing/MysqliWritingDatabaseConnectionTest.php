@@ -62,7 +62,7 @@ final class MysqliWritingDatabaseConnectionTest extends TestCase
         );
     }
 
-    public function testCannotExecuteWriteStatementWhenParameterCountDoesNotMatch(): void
+    public function testRaisesAnExceptionWhenParameterCountDoesNotMatch(): void
     {
         $connection = $this->connectionForWriting();
 
@@ -75,7 +75,7 @@ final class MysqliWritingDatabaseConnectionTest extends TestCase
         );
     }
 
-    public function testRaisesAnExceptionWhenStatementFails(): void
+    public function testRaisesAnExceptionWhenStatementFailsToExecute(): void
     {
         $connection = $this->connectionForWriting();
 
