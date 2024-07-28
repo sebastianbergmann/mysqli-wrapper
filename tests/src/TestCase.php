@@ -9,6 +9,9 @@
  */
 namespace SebastianBergmann\MysqliWrapper\Testing;
 
+use const MYSQLI_OPT_INT_AND_FLOAT_NATIVE;
+use const MYSQLI_REPORT_ERROR;
+use const MYSQLI_REPORT_STRICT;
 use function mysqli_report;
 use mysqli;
 use PHPUnit\Framework\TestCase as PhpunitTestCase;
