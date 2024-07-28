@@ -86,8 +86,8 @@ final class MysqliWritingDatabaseConnectionTest extends TestCase
     public function testRaisesAnExceptionWhenStatementReturnsResult(): void
     {
         $this->expectException(StatementReturnedResultException::class);
+        $this->expectExceptionMessage('Statement unexpectedly returned a result');
 
         $this->connectionForReadingAndWriting()->execute('SELECT * FROM test;');
-        $this->expectExceptionMessage('Statement unexpectedly returned a result');
     }
 }
