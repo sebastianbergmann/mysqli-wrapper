@@ -9,7 +9,6 @@
  */
 namespace SebastianBergmann\MysqliWrapper;
 
-use function array_values;
 use mysqli;
 use mysqli_sql_exception;
 
@@ -32,7 +31,7 @@ trait MysqliWritingDatabaseConnectionTrait
         $this->ensureParameterCountMatches($sql, $parameters);
 
         try {
-            $result = $this->connection()->execute_query($sql, array_values($parameters));
+            $result = $this->connection()->execute_query($sql, $parameters);
         } catch (mysqli_sql_exception $e) {
             throw new StatementFailedException(
                 $e->getMessage(),

@@ -10,7 +10,6 @@
 namespace SebastianBergmann\MysqliWrapper;
 
 use const MYSQLI_ASSOC;
-use function array_values;
 use mysqli;
 use mysqli_result;
 use mysqli_sql_exception;
@@ -36,7 +35,7 @@ trait MysqliReadingDatabaseConnectionTrait
         $this->ensureParameterCountMatches($sql, $parameters);
 
         try {
-            $result = $this->connection()->execute_query($sql, array_values($parameters));
+            $result = $this->connection()->execute_query($sql, $parameters);
 
             if (!$result instanceof mysqli_result) {
                 throw new StatementDidNotReturnResultException;
