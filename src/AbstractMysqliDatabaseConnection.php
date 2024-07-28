@@ -15,6 +15,8 @@ use function substr_count;
 use mysqli;
 
 /**
+ * @no-named-arguments Parameter names are not covered by the backward compatibility promise
+ *
  * @internal This class is not covered by the backward compatibility promise
  */
 abstract readonly class AbstractMysqliDatabaseConnection

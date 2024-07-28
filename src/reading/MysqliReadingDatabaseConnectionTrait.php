@@ -16,6 +16,8 @@ use mysqli_result;
 use mysqli_sql_exception;
 
 /**
+ * @no-named-arguments Parameter names are not covered by the backward compatibility promise
+ *
  * @internal This trait is not covered by the backward compatibility promise
  */
 trait MysqliReadingDatabaseConnectionTrait
