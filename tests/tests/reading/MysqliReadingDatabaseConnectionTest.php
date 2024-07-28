@@ -77,6 +77,7 @@ final class MysqliReadingDatabaseConnectionTest extends TestCase
     public function testRaisesAnExceptionWhenStatementDoesNotReturnResult(): void
     {
         $this->expectException(StatementDidNotReturnResultException::class);
+        $this->expectExceptionMessage('Statement did not return a result');
 
         $this->connectionForReadingAndWriting()->query('INSERT INTO test (a, b, c) VALUES("test", 1234, 12.34);');
     }
