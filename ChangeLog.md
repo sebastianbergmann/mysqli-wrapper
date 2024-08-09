@@ -2,7 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
-## [1.0.3] - 2024-MM-DD
+## [1.0.3] - 2024-08-09
 
 ### Fixed
 
@@ -26,7 +26,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial release
 
-[1.0.3]: https://github.com/sebastianbergmann/mysqli-wrapper/compare/1.0.2...main
+[1.0.3]: https://github.com/sebastianbergmann/mysqli-wrapper/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/sebastianbergmann/mysqli-wrapper/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/sebastianbergmann/mysqli-wrapper/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/sebastianbergmann/mysqli-wrapper/compare/7fcdc443b92045446dc8ba4a2ed645c0e918c867...1.0.0
