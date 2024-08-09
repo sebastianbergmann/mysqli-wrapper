@@ -67,27 +67,27 @@ jobs:
           - "8.3"
 
     steps:
-      - name: "Checkout"
+      - name: Checkout
         uses: "actions/checkout@v4"
 
-      - name: "Install MySQL"
+      - name: Install MySQL
         uses: shogo82148/actions-setup-mysql@v1
         with:
           mysql-version: "9.0"
 
-      - name: "Set up test database"
+      - name: Set up test database
         run: mysql -u root < ./tests/fixture/schema.sql
 
-      - name: "Install PHP with extensions"
+      - name: Install PHP with extensions
         uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-version }}"
           coverage: "xdebug"
 
-      - name: "Install dependencies with Composer"
+      - name: Install dependencies with Composer
         run: "./tools/composer update --no-ansi --no-interaction --no-progress"
 
-      - name: "Run tests with PHPUnit"
+      - name: Run tests with PHPUnit
         run: "./tools/phpunit --log-junit junit.xml --coverage-clover=coverage.xml"
 
       - name: Upload test results to Codecov.io
@@ -96,7 +96,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: "Send code coverage report to Codecov.io"
+      - name: Upload code coverage data to Codecov.io
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
