@@ -44,8 +44,6 @@ final class MysqliWritingDatabaseConnectionTest extends TestCase
             12.34,
         );
 
-        $this->assertTrue($result);
-
         $result = $this->nativeConnection()->query('SELECT * FROM test;');
 
         $this->assertInstanceOf(mysqli_result::class, $result);

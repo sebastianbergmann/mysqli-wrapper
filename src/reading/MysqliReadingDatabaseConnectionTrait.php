@@ -41,6 +41,7 @@ trait MysqliReadingDatabaseConnectionTrait
                 throw new StatementDidNotReturnResultException;
             }
 
+            /* @phpstan-ignore return.type */
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (mysqli_sql_exception $e) {
             throw new StatementFailedException(

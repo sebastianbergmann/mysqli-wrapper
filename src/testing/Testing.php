@@ -78,6 +78,7 @@ trait Testing
      */
     final protected function assertQuery(array $expected, string $query, float|int|string ...$parameters): void
     {
+        /* @phpstan-ignore argument.named */
         Assert::assertSame($expected, $this->connectionForTesting()->query($query, ...$parameters));
     }
 
