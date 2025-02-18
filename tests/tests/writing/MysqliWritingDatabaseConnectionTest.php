@@ -19,6 +19,7 @@ use SebastianBergmann\MysqliWrapper\Testing\TestCase;
 use SebastianBergmann\MysqliWrapper\Testing\Testing;
 
 #[CoversClass(MysqliWritingDatabaseConnection::class)]
+#[CoversClass(AbstractMysqliDatabaseConnection::class)]
 #[CoversClass(ParameterMismatchException::class)]
 #[CoversClass(StatementFailedException::class)]
 #[CoversClass(StatementReturnedResultException::class)]

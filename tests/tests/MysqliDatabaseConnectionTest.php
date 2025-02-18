@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\TestDox;
 use SebastianBergmann\MysqliWrapper\Testing\TestCase;
 
 #[CoversClass(MysqliDatabaseConnection::class)]
+#[CoversClass(AbstractMysqliDatabaseConnection::class)]
 #[Medium]
 #[TestDox('MysqliDatabaseConnection class')]
 final class MysqliDatabaseConnectionTest extends TestCase
