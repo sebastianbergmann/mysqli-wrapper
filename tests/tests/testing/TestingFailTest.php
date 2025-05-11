@@ -24,6 +24,7 @@ final class TestingFailTest extends PhpunitTestCase
 
     public function testSkipsTestExecutionWhenConnectingToDatabaseFails(): void
     {
+        /** @phpstan-ignore classConstant.internalClass */
         $this->expectException(SkippedWithMessageException::class);
 
         $this->emptyTable('test');
