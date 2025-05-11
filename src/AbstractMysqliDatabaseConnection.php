@@ -20,8 +20,6 @@ use mysqli_sql_exception;
 
 /**
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise
- *
- * @internal This class is not covered by the backward compatibility promise
  */
 abstract readonly class AbstractMysqliDatabaseConnection
 {
