@@ -24,6 +24,7 @@
         "platform": {
             "php": "8.3.9"
         },
+        "classmap-authoritative": true,
         "optimize-autoloader": true,
         "sort-packages": true
     },
