@@ -16,13 +16,13 @@
         "issues": "https://github.com/sebastianbergmann/mysqli-wrapper/issues"
     },
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-mysqli": "*",
-        "sebastian/csv-parser": "^1.0"
+        "sebastian/csv-parser": "^2.0"
     },
     "config": {
         "platform": {
-            "php": "8.3.9"
+            "php": "8.4.0"
         },
         "classmap-authoritative": true,
         "optimize-autoloader": true,
@@ -40,7 +40,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "1.0-dev"
+            "dev-main": "2.0-dev"
         }
     }
 }
