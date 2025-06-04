@@ -6,7 +6,7 @@
 # sebastian/mysqli-wrapper
 
 This repository contains code that was originally written while building an example application for my
-"[Event-Based Testing](https://thephp.cc/presentations/event-based-testing?ref=github)" presentation.
+"[Event-Based Testing](https://thephp.cc/presentations/testable-database-interaction?ref=github)" presentation.
 
 The code has been extracted from this example application into a reusable component. Just because
 this component can be installed using Composer does not mean that it is anything  other than example
