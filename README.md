@@ -9,7 +9,7 @@ This repository contains code that was originally written while building an exam
 "[Event-Based Testing](https://thephp.cc/presentations/testable-database-interaction?ref=github)" presentation.
 
 The code has been extracted from this example application into a reusable component. Just because
-this component can be installed using Composer does not mean that it is anything  other than example
+this component can be installed using Composer does not mean that it is anything other than example
 code. It is not production-ready. It is intended for study and learning purposes only.
 
 The only reason this code was extracted into a reusable component is to make reusing it in other
