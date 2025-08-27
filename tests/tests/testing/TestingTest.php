@@ -47,7 +47,6 @@ final class TestingTest extends TestCase
     #[TestDox('assertQuery() fails when query result does not match array')]
     public function testCanCompareQueryResultToArrayFailure(): void
     {
-        /** @phpstan-ignore classConstant.internalClass */
         $this->expectException(ExpectationFailedException::class);
 
         $this->assertQuery(
@@ -75,7 +74,6 @@ final class TestingTest extends TestCase
     #[TestDox('assertTableEqualsArray() fails when table does not match array')]
     public function testCanCompareTableToArrayFailure(): void
     {
-        /** @phpstan-ignore classConstant.internalClass */
         $this->expectException(ExpectationFailedException::class);
 
         $this->assertTableEqualsArray(
@@ -102,7 +100,6 @@ final class TestingTest extends TestCase
     #[TestDox('assertTableEqualsCsvFile() fails when table does not match CSV file')]
     public function testCanCompareTableToCsvFileFailure(): void
     {
-        /** @phpstan-ignore classConstant.internalClass */
         $this->expectException(ExpectationFailedException::class);
 
         $this->assertTableEqualsCsvFile(
