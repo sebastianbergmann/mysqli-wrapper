@@ -49,6 +49,7 @@ abstract readonly class AbstractMysqliDatabaseConnection
 
         $connection->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
 
+        /** @phpstan-ignore new.staticInAbstractClassStaticMethod */
         return new static($connection);
     }
 
