@@ -86,7 +86,7 @@ jobs:
           persist-credentials: false
 
       - name: Install MySQL
-        uses: shogo82148/actions-setup-mysql@9c42ca180d5f1dd4dceb54c23c5eda0384f4d265 # v1.50.0
+        uses: shogo82148/actions-setup-mysql@c80f44ab210a360ef966c5b9f48a2ae21123b533 # v1.51.0
         with:
           mysql-version: 9.0
 
@@ -135,7 +135,7 @@ jobs:
           persist-credentials: false
 
       - name: Install MySQL
-        uses: shogo82148/actions-setup-mysql@9c42ca180d5f1dd4dceb54c23c5eda0384f4d265 # v1.50.0
+        uses: shogo82148/actions-setup-mysql@c80f44ab210a360ef966c5b9f48a2ae21123b533 # v1.51.0
         with:
           mysql-version: 9.0
 
