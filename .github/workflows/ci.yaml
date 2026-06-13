@@ -31,7 +31,7 @@ jobs:
           persist-credentials: false
 
       - name: Install PHP
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ env.PHP_VERSION }}
           coverage: none
@@ -53,7 +53,7 @@ jobs:
           persist-credentials: false
 
       - name: Install PHP
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ env.PHP_VERSION }}
           coverage: none
@@ -86,7 +86,7 @@ jobs:
           persist-credentials: false
 
       - name: Install MySQL
-        uses: shogo82148/actions-setup-mysql@c80f44ab210a360ef966c5b9f48a2ae21123b533 # v1.51.0
+        uses: shogo82148/actions-setup-mysql@b35e23af29aa7b32dc3c434e87a53e12d5706911 # v1.52.0
         with:
           mysql-version: 9.0
 
@@ -94,7 +94,7 @@ jobs:
         run: mysql -u root < ./tests/fixture/schema.sql
 
       - name: Install PHP with extensions
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ matrix.php-version }}
           coverage: none
@@ -135,7 +135,7 @@ jobs:
           persist-credentials: false
 
       - name: Install MySQL
-        uses: shogo82148/actions-setup-mysql@c80f44ab210a360ef966c5b9f48a2ae21123b533 # v1.51.0
+        uses: shogo82148/actions-setup-mysql@b35e23af29aa7b32dc3c434e87a53e12d5706911 # v1.52.0
         with:
           mysql-version: 9.0
 
@@ -143,7 +143,7 @@ jobs:
         run: mysql -u root < ./tests/fixture/schema.sql
 
       - name: Install PHP with extensions
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # 2.37.1
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ matrix.php-version }}
           coverage: xdebug
