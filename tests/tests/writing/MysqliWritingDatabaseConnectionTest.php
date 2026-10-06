@@ -37,7 +37,7 @@ final class MysqliWritingDatabaseConnectionTest extends TestCase
     {
         $connection = $this->connectionForWriting();
 
-        $result = $connection->execute(
+        $connection->execute(
             'INSERT INTO test (a, b, c) VALUES(?, ?, ?);',
             'test',
             1234,
